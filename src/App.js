@@ -34,6 +34,7 @@ const App = () => {
       }
     } catch (error) {
       console.error("Error fetching movies:", error);
+      alert("An error occurred while fetching movies. Please try again.");
     }
     setLoading(false);
   };
