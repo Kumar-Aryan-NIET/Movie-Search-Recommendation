@@ -20,7 +20,7 @@ const App = () => {
 
     setLoading(true);
     try {
-      let url = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`;
+      let url = `https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`;
       if (year) url += `&y=${year}`;
       if (type) url += `&type=${type}`;
 
@@ -42,17 +42,25 @@ const App = () => {
     <Router>
       <div style={{ textAlign: "center" }}>
         <nav style={{ padding: "10px", background: "#333" }}>
-          <Link to="/" style={{ color: "white", margin: "10px", textDecoration: "none" }}>Home</Link>
+          <Link
+            to="/"
+            style={{ color: "white", margin: "10px", textDecoration: "none" }}
+          >
+            Home
+          </Link>
         </nav>
 
         <h1>Movie Search App</h1>
         <Routes>
-          <Route path="/" element={
-            <>
-              <SearchBar onSearch={searchMovies} />
-              <MovieList movies={movies} loading={loading} />
-            </>
-          } />
+          <Route
+            path="/"
+            element={
+              <>
+                <SearchBar onSearch={searchMovies} />
+                <MovieList movies={movies} loading={loading} />
+              </>
+            }
+          />
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -62,4 +70,3 @@ const App = () => {
 };
 
 export default App;
-
