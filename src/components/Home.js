@@ -19,7 +19,10 @@ const Home = () => {
     setLoading(true);
 
     try {
-      const response = await axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`);
+      const response = await axios.get(
+        `https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
+      );
+      console.log("API Response:", response.data);
       if (response.data.Response === "True") {
         setMovies(response.data.Search);
       } else {
@@ -32,7 +35,7 @@ const Home = () => {
   };
 
   const handleMovieSelect = (imdbID) => {
-    navigate(`/movie/${imdbID}`);  // Navigate to movie details page
+    navigate(`/movie/${imdbID}`); // Navigate to movie details page
   };
 
   return (
